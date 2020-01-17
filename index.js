@@ -9,8 +9,9 @@ const template=require("./template");
 const puppeteer=require("puppeteer");
 
 // asking for color and portfolio name
-const questions=[{message: "What is your favorite color:",type: "input", name:  "name"},
-                 {message:  "What is your Github user name:",type:"input",name: "githubP"}];
+const questions=[{message: 'Background color      : ',type:'list' ,name: 'bgColor', choices: ['blue','red','green','purple','black','orange','yellow','gold','white','silver']},
+                 {message: 'Card color            : ',type:'list' ,name: 'color',   choices: ['blue','red','green','purple','black','orange','yellow','gold','white','silver']},
+                 {message: 'Your Github user name : ',type:'input',name: 'githubP'}];
 
 inquirer.prompt(questions).then(answers=>{
 
