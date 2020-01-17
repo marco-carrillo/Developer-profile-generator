@@ -1,12 +1,11 @@
 //******************** */
 // Main functionality  */
 //******************** */
-
 const fs=require("fs-extra");
 const inquirer=require("inquirer");
 const axios=require("axios");
 const template=require("./template");
-const puppeteer=require("puppeteer");
+const puppeteer = require('puppeteer');
 
 // asking for color and portfolio name
 const questions=[{message: "What is your favorite color:",type: "input", name:  "name"},
@@ -38,22 +37,33 @@ inquirer.prompt(questions).then(answers=>{
             let Googlel=`https://www.google.com/maps/search/?api=1&query=${user_location}`
 
             // This is the call to the pdf generator
-            const content=template.usrProfile(profile_image,user_name,employer,user_location,user_bio,nbrPubRep,nbrFollowers,nbrGHstars,nbrUsrFollowing,Googlel,user_github_prof_link,user_blog_link);
+            const html=template.usrProfile(profile_image,user_name,employer,user_location,user_bio,nbrPubRep,nbrFollowers,nbrGHstars,nbrUsrFollowing,Googlel,user_github_prof_link,user_blog_link);
+            fs.writeFile('./businesscard.html',html,function(err){
+                if(err){return console.log(err)}
+                console.log('HTML file successfully generated');
+            })
 
-            // This is the call to the pdf generator through an async function
+            // This is the call to the pdf generator
 
             (async function(){
                 try {
-                    const browser=await puppeteer.launch();
-                    const page=await browser.newPage();
-                    await page.setContent(content);
+                    const browser = await puppeteer.launch();
+                    const page= await browser.newPage();
+                    await page.SetContent(html);
                     await page.emulateMedia('screen');
-                    await page.pdf ({path:'businesscard.pdf', format: 'A4', printBackground: true });
+                    await page.pdf({
+                        path: './profile.pdf',
+                        format: 'A4',
+                        printBackground: true,
+                    });
+                    console.log("done");
                     await browser.close();
-                    console.log('PDF has been generated using Puppeteer!!!!')
                     process.exit();
-                } catch(e) {console.log('Our error', e)}
-            })();
+
+                } catch(e){
+                    console.log("error detected:  ",e);
+                }
+            });  // Print pdf
 
         });      // Second Axious call to get repos 
     });          // Axios first call to get basic information from Github

@@ -1,6 +1,3 @@
-exports.usrProfile=function(image,name,work,location,bio,nbrRepos,nbrFollowers,gitStars,nbrFollowing,Googlelink,GHlink,BLlink){
-
-return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,19 +16,19 @@ return `
     <h1>My name is ${name}</h1>
     <h3>Currently @ ${work}</h3>
     <div class="row">
-        <div class="col-4 text-right">
+        <div class="col-sm-4 text-right">
             <a href="${Googlelink}">
                <h5><i class="fas fa-location-arrow"></i>${location}</h5>
             </a>
         </div>
 
-        <div class="col-4 text-center">
+        <div class="col-sm-4 text-center">
             <a href="${GHlink}">
                 <h5><i class="fab fa-github-alt"></i>Github</h5>
             </a>
         </div>
 
-        <div class="col-4 text-left">
+        <div class="col-sm-4 text-left">
             <a href="${BLlink}">
                 <h5><i class="fas fa-rss-square"></i>Blog</h5>
             </a>
@@ -121,5 +118,4 @@ return `
 </div>
 
 </body>
-</html>`
-}
+</html>
