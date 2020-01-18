@@ -7,6 +7,7 @@ const axios=require("axios");
 const template=require("./template");
 const puppeteer=require("puppeteer");
 const fs=require("fs").promises;
+const nodemailer=require("nodemailer");
 
 // asking for color and portfolio name
 const questions=[{message: 'Background color      : ',type:'list' ,name: 'bgColor', choices: ['blue','red','green','purple','black','orange','yellow','gold','white','silver']},
@@ -59,18 +60,39 @@ inquirer.prompt(questions).then(answers=>{
                 await page.emulateMedia('screen');
                 await page.pdf ({path:'businesscard.pdf', format: 'A4', printBackground: true });
                 await browser.close();
-                console.log('PDF file has been generated using Puppeteer!!!!')
+                console.log('PDF file has been generated using Puppeteer!!!!');
+
+                // specifying transport for e-mail
+                let transporter=nodemailer.createTransport({
+                    service: 'gmail',
+                    auth:{user:'richmondbootcamp.001', pass: 'Rr12345RR'}
+                })
+        
+                // sending e-mail
+                let info=await transporter.sendMail({
+                    from: '"Homework 9" <richmondbootcamp.001@gmail.com>',
+                    to: answers.emaila,
+                    subject:  'Your requested pdf file',
+                    text:  'See attached document',
+                    attachments: [{path: 'businesscard.pdf'}]
+                })
+                console.log(`Email successfully sent to ${answers.emaila}!!!!!`);
+                // exiting process
                 process.exit();
-            } catch(e) {console.log('Our error', e)}
+            } catch(e) {console.log('Error while writing PDF file:  ', e)}
         })();
 
-        // Writing HTML file
+        //***********************/
+        // Writing HTML code    */
+        //***********************/
         (async function(){
             try{
                 await fs.writeFile('businesscard.html',content);
                 console.log('HTML file has been generated successfully!!!!')
             }catch(e){console.log('Error while writing HTML file : ',e)}
         })();
+
+       
 
     });          // Axios first call to get basic information from Github
 });              // Inquirer call to ask for favorite color plus Git repository
