@@ -1,4 +1,4 @@
-exports.usrProfile=function(image,name,work,location,bio,nbrRepos,nbrFollowers,gitStars,nbrFollowing,Googlelink,GHlink,BLlink){
+exports.usrProfile=function(image,name,work,location,bio,nbrRepos,nbrFollowers,gitStars,nbrFollowing,Googlelink,GHlink,BLlink,bgcolor,frcolor){
 
 return `
 <!DOCTYPE html>
@@ -10,10 +10,15 @@ return `
     <title>${name} profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <style>
+       .mcard {
+           background-color: ${frcolor}
+       }
+    </style>
 </head>
-<body style="background-color: blanchedalmond;">
+<body style="background-color: ${bgcolor};">
 
-<div class="jumbotron bg-info my-5 text-center">
+<div class="jumbotron mcard my-5 text-center">
     <img src="${image}" alt="user image" class="rounded-circle" style="height:200px">
     <h1>Hi!</h1>
     <h1>My name is ${name}</h1>
@@ -52,7 +57,7 @@ return `
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-5 text-center bg-danger">
+    <div class="col-5 text-center mcard">
         <div class="row">
             <div class="col-12 text-center">
                  <h3>Public Repositories</h3>
@@ -67,7 +72,7 @@ return `
 
     <div class="col-1"></div>  <!--middle divider-->
 
-    <div class="col-5 text-center bg-danger">
+    <div class="col-5 text-center mcard">
         <div class="row">
             <div class="col-12 text-center">
                  <h3>Followers</h3>
@@ -89,7 +94,7 @@ return `
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-5 text-center bg-danger">
+    <div class="col-5 text-center mcard">
         <div class="row">
             <div class="col-12 text-center">
                  <h3>GitHub stars</h3>
@@ -104,7 +109,7 @@ return `
 
     <div class="col-1"></div>  <!--middle divider-->
 
-    <div class="col-5 text-center bg-danger">
+    <div class="col-5 text-center mcard">
         <div class="row">
             <div class="col text-center">
                  <h3>Following</h3>
