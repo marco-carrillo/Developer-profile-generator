@@ -33,4 +33,4 @@ Information on the PDF file includes the following:
 *  Number of Github user that is following
 *  Number of Github stars on Github user public repositories
 
-![GIF of input](Email-attachment.GIF)
+![E-mail attachment](./Email-attachment.gif)
