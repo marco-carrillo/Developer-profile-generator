@@ -63,6 +63,8 @@ const questions=[{message: 'Background color   : ',type:'list' ,name: 'bgColor',
         let nbrUsrFollowing=data.following;
         let nbrGHstars=0;  // will get this number in the second API call
         let content='';    // will get this number in the second API call
+        let Googlel=`https://www.google.com/maps/search/?api=1&query=${user_location}`;
+        content=template.usrProfile(profile_image,user_name,employer,user_location,user_bio,nbrPubRep,nbrFollowers,nbrGHstars,nbrUsrFollowing,Googlel,user_github_prof_link,user_blog_link,answers.bgColor,answers.color);
         console.log('Successfully called GitHub API to get basic data');
 
         //**************************************************************************************************************/
@@ -91,7 +93,7 @@ const questions=[{message: 'Background color   : ',type:'list' ,name: 'bgColor',
 
         } while (iterate);
 
-        let Googlel=`https://www.google.com/maps/search/?api=1&query=${user_location}`;
+        Googlel=`https://www.google.com/maps/search/?api=1&query=${user_location}`;
         content=template.usrProfile(profile_image,user_name,employer,user_location,user_bio,nbrPubRep,nbrFollowers,nbrGHstars,nbrUsrFollowing,Googlel,user_github_prof_link,user_blog_link,answers.bgColor,answers.color);
         console.log(`Successfully called GitHub API to get Github stars.  Total stars:  ${nbrGHstars}`);
 

@@ -35,3 +35,14 @@ Information on the PDF file includes the following:
 The application generates an HTML and a PDF file.  Additionally, it sends the PDF file to the e-mail address specified by the user.
 
 ![E-mail attachment](./Email-attachment.gif)
+
+
+## Full demo
+
+The following GIF shows the following actions
+* User entering information to the application
+* Application performing process
+* Output of file and their links to other information
+* E-mail sent with attachment of PDF file
+
+![GIF of input](./full-demo.gif)
