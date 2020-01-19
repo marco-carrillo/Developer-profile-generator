@@ -13,7 +13,7 @@ The application will ask the user to enter the following parameters:
 *  Github username:  User can enter the github username that needs to be profiled in the PDF and HTML files.  
 *  E-mail address:  User enters an email address, so that the application can email the PDF file directly.
 
-![GIF of input](NodeJScreation.GIF)
+![GIF of input](./NodeJScreation.gif)
 
 
 
