@@ -21,7 +21,6 @@ The application will ask the user to enter the following parameters:
 
 Information on the PDF file includes the following:
 
-
 *  Picture of the Github user, as defined in Github
 *  Name of the Github user, and where he/she works
 *  Github user location (with Google link)
@@ -32,5 +31,7 @@ Information on the PDF file includes the following:
 *  Number of Github followers
 *  Number of Github user that is following
 *  Number of Github stars on Github user public repositories
+
+The application generates an HTML and a PDF file.  Additionally, it sends the PDF file to the e-mail address specified by the user.
 
 ![E-mail attachment](./Email-attachment.gif)
